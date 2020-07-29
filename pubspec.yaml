@@ -1,5 +1,7 @@
-name: galleryapp
-description: Skillbranch gallery app
+name: FlutterGalleryApp
+description: FlutterGalleryApp
+authors:
+  - Feduch <fedor.buzinov@gmail.com>
 
 publish_to: 'none'
 
