@@ -1,7 +1,6 @@
 name: FlutterGalleryApp
-description: FlutterGalleryApp
-authors:
-  - Feduch <fedor.buzinov@gmail.com>
+description: "FlutterGalleryApp"
+author: Feduch <fedor.buzinov@gmail.com>
 
 publish_to: 'none'
 
