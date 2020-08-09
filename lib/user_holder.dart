@@ -41,11 +41,39 @@ class UserHolder {
     }
   }
 
-  void findUserInFriends(String login) {
-
+  setFriends(String login, List<User> friend) {
+    users[login].addFriend(friend);
   }
 
-  void importUsers(String fileName  ) {
+  User findUserInFriends(String login, User usersFriend) {
+    for (var friend in users[login].friends) {
+      if (friend == usersFriend) return friend;
+    }
+    throw Exception("fried not found");
+  }
 
+  List<User> importUsers(List<String> users) {
+    String email;
+    String phone;
+    String fullName;
+    List<User> result = [];
+    users.forEach((element) {
+      var usersList = element.replaceAll('\n', '').trim().split(';');
+      if (usersList.length != 0) {
+        usersList.forEach((el) {
+          if (el != '') {
+            if (el.contains('@')) {
+              email = el.trim();
+            } else if (el.contains('+')) {
+              phone = el.trim();
+            } else {
+              fullName = el.trim();
+            }
+          }
+        });
+        result.add(User(name: fullName, phone: phone, email: email));
+      }
+    });
+    return result;
   }
 }
