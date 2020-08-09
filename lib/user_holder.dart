@@ -1,4 +1,4 @@
-import 'package:FlutterGalleryApp/models/user.dart';
+import 'models/user.dart';
 
 import 'string_utils.dart';
 
