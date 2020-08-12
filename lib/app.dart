@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:activity_recognition_flutter/activity_recognition_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,11 +29,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Stream<Activity> stream;
+  Activity latestActivity = Activity.empty();
+
   int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    stream = ActivityRecognition.activityUpdates();
+    stream.listen(onData);
+  }
+
+  void onData(Activity activity) {
+    setState(() {
+      latestActivity = activity;
     });
   }
 
@@ -53,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Text(latestActivity.toString())
           ],
         ),
       ),
